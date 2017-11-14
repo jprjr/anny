@@ -7,10 +7,8 @@ services:
 
 before_install:
   - docker info
-  - docker build --no-cache -t izonder/anny-quick -f Dockerfile.quick .
+  - docker build --no-cache -t izonder/anny .
 
 script:
-  - docker run -it --rm izonder/anny-quick node -v
-  - docker build --no-cache -t izonder/anny .
   - docker run -it --rm izonder/anny node -v
 
