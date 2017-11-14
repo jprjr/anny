@@ -5,10 +5,12 @@ language: c
 services:
   - docker
 
-script:
+before_install:
   - docker info
-  - docker build --no-cache -t izonder/anny -f Dockerfile.quick .
-  - docker run -it --rm izonder/anny node -v
+  - docker build --no-cache -t izonder/anny-quick -f Dockerfile.quick .
+
+script:
+  - docker run -it --rm izonder/anny-quick node -v
   - docker build --no-cache -t izonder/anny .
   - docker run -it --rm izonder/anny node -v
 
