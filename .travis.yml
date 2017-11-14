@@ -12,6 +12,6 @@ before_install:
 
 script:
   - docker run -it --rm izonder/anny-procps ps xafo pid,ppid,pgid,sid,comm
-  - docker run -it --rm izonder/anny ps ps xafo pid,ppid,pgid,sid,comm
+  - docker run -it --rm izonder/anny ps xafo pid,ppid,pgid,sid,comm
   - docker run -it --rm izonder/anny node -v -e 'true'
 
