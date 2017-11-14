@@ -11,7 +11,7 @@ before_install:
   - docker build --no-cache -t izonder/anny-procps -f Dockerfile.procps .
 
 script:
-  - docker run -it --rm izonder/anny-procps ps auxf
-  - docker run -it --rm izonder/anny ps auxf
+  - docker run -it --rm izonder/anny-procps ps xafo pid,ppid,pgid,sid,comm
+  - docker run -it --rm izonder/anny ps ps xafo pid,ppid,pgid,sid,comm
   - docker run -it --rm izonder/anny node -v -e 'true'
 
