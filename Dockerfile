@@ -38,7 +38,7 @@ RUN set -x \
 # Install S6-overlay
 ##############################################################################
 
-    && curl -o /tmp/s6-overlay-amd64.tar.gz -sSL https://github.com/just-containers/s6-overlay/releases/download/${S6_VERSION}/s6-overlay-amd64.tar.gz \
+    && curl -o /tmp/s6-overlay-amd64.tar.gz -sSL https://jrjrtech.com/~john/s6-overlay-amd64.tar.gz \
     && tar -zxf /tmp/s6-overlay-amd64.tar.gz -C / \
 
 ##############################################################################
