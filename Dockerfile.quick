@@ -1,0 +1,11 @@
+FROM alpine:3.6
+
+RUN set -x \
+    && apk add --no-cache \
+        nodejs \
+        ca-certificates \
+        curl \
+    && curl -o /tmp/s6-overlay-amd64.tar.gz -sSL https://jrjrtech.com/~john/s6-overlay-amd64.tar.gz \
+    && tar -zxf /tmp/s6-overlay-amd64.tar.gz -C /
+
+ENTRYPOINT ["/init"]

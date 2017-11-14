@@ -5,14 +5,10 @@ language: c
 services:
   - docker
 
-before_install:
-  - docker info
-  - docker build --no-cache -t izonder/anny .
-
 script:
+  - docker info
+  - docker build --no-cache -t izonder/anny -f Dockerfile.quick .
   - docker run -it --rm izonder/anny node -v
-  - docker run -it --rm izonder/anny yarn --version
-  - docker run -it --rm izonder/anny yarn global add npm
+  - docker build --no-cache -t izonder/anny .
+  - docker run -it --rm izonder/anny node -v
 
-after_success:
-  - curl -X POST https://registry.hub.docker.com/u/izonder/anny/trigger/$DOCKER_TRIGGER_TOKEN/
