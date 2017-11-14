@@ -12,8 +12,6 @@ before_install:
 
 script:
   - docker run -it --rm izonder/anny-procps ps auxf
-  - docker run -it --rm izonder/anny cat /var/run/s6/services/docker-cmd/run
-  - docker run -it --rm izonder/anny ls /var/run/s6/services/docker-cmd
   - docker run -it --rm izonder/anny ps auxf
   - docker run -it --rm izonder/anny node -v -e 'true'
 
