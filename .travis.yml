@@ -8,8 +8,10 @@ services:
 before_install:
   - docker info
   - docker build --no-cache -t izonder/anny -f Dockerfile.test .
+  - docker build --no-cache -t izonder/anny-procps -f Dockerfile.procps .
 
 script:
+  - docker run -it --rm izonder/anny-procps ps auxf
   - docker run -it --rm izonder/anny cat /var/run/s6/services/docker-cmd/run
   - docker run -it --rm izonder/anny ls /var/run/s6/services/docker-cmd
   - docker run -it --rm izonder/anny ps auxf
