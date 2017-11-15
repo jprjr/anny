@@ -11,8 +11,9 @@ before_install:
   - docker build --no-cache -t izonder/anny-procps -f Dockerfile.procps .
 
 script:
-  - docker run --rm izonder/anny-procps ps xafo pid,ppid,pgid,sid,comm
-  - docker run --rm izonder/anny echo 'test'
-  - docker run --rm izonder/anny ps xafo pid,ppid,pgid,sid,comm
-  - docker run --rm izonder/anny node -v -e 'true'
+  - docker run --rm -ti alpine:3.6 ps auxf
+  - docker run --rm -ti izonder/anny-procps ps xafo pid,ppid,pgid,sid,tty,comm,args
+#  - docker run --rm izonder/anny echo 'test'
+  - docker run --rm -ti izonder/anny ps xafo pid,ppid,pgid,sid,tty,comm,args
+  - docker run --rm -ti izonder/anny node -v -e 'true'
 
