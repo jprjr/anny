@@ -5,4 +5,4 @@ RUN tar -zxf /tmp/s6-overlay-amd64.tar.gz -C /
 RUN apk update && apk add procps strace
 #COPY root /
 
-ENTRYPOINT ["strace", "/init"]
+ENTRYPOINT ["strace", "-f", "/init"]

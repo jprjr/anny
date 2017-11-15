@@ -5,4 +5,4 @@ RUN apk update && \
 
 ADD https://github.com/just-containers/s6-overlay/releases/download/v1.20.0.0/s6-overlay-amd64.tar.gz /tmp/
 RUN tar -zxf /tmp/s6-overlay-amd64.tar.gz -C /
-ENTRYPOINT ["strace","/init"]
+ENTRYPOINT ["strace","-f","/init"]
