@@ -6,6 +6,7 @@ services:
   - docker
 
 before_install:
+  - ps xafo pid,ppid,pgid,sid,tty,comm,args
   - docker info
   - docker build --no-cache -t test-ps -f Dockerfile.mini .
   - docker build --no-cache -t izonder/anny -f Dockerfile.test .
