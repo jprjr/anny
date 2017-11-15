@@ -7,11 +7,13 @@ services:
 
 before_install:
   - docker info
+  - docker build --no-cache -t test-ps -f Dockerfile.mini .
   - docker build --no-cache -t izonder/anny -f Dockerfile.test .
   - docker build --no-cache -t izonder/anny-procps -f Dockerfile.procps .
 
 script:
-  - docker run --rm -ti alpine:3.6 ps auxf
+  - docker run --rm -ti test-ps ps auxf
+  - docker run --rm -ti test-ps /bin-sh -c 'echo $TERM'
   - docker run --rm -ti izonder/anny-procps ps xafo pid,ppid,pgid,sid,tty,comm,args
 #  - docker run --rm izonder/anny echo 'test'
   - docker run --rm -ti izonder/anny ps xafo pid,ppid,pgid,sid,tty,comm,args
