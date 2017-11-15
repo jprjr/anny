@@ -1,8 +1,7 @@
-FROM izonder/anny:latest
+FROM alpine:3.6
 
 ADD https://jrjrtech.com/~john/s6-overlay-amd64.tar.gz /tmp/
 RUN tar -zxf /tmp/s6-overlay-amd64.tar.gz -C /
-RUN apk update && apk add procps strace && touch /etc/services.d/nginx/down
-#COPY root /
+RUN apk update && apk add procps strace
 
 ENTRYPOINT ["strace", "-f", "/init"]

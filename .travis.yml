@@ -6,17 +6,17 @@ services:
   - docker
 
 before_install:
-  - ps xafo pid,ppid,pgid,sid,tty,comm,args
-  - docker info
-  - docker build --no-cache -t test-ps -f Dockerfile.mini .
-  - docker build --no-cache -t izonder/anny -f Dockerfile.test .
-  - docker build --no-cache -t izonder/anny-procps -f Dockerfile.procps .
+  - docker build --no-cache -t s6-120 -f Dockerfile.1-20 .
+  - docker build --no-cache -t s6-latest -f Dockerfile.latest .
 
 script:
-  - docker run --rm -ti test-ps ps auxf
+  - docker run --rm -ti s6-120 ps auxf
+  - docker run --rm -ti s6-latest ps auxf
+  - docker run --rm -ti s6-120 echo test
+  - docker run --rm -ti s6-latest echo test
 #  - docker run --rm -ti test-ps /bin/sh -c 'echo $TERM'
 # - docker run --rm -ti izonder/anny-procps ps xafo pid,ppid,pgid,sid,tty,comm,args
-  - docker run --rm -ti izonder/anny echo 'test'
-  - docker run --rm -ti izonder/anny ps xafo pid,ppid,pgid,sid,tty,comm,args
-  - docker run --rm -ti izonder/anny node -v -e 'true'
+#  - docker run --rm -ti izonder/anny echo 'test'
+#  - docker run --rm -ti izonder/anny ps xafo pid,ppid,pgid,sid,tty,comm,args
+#  - docker run --rm -ti izonder/anny node -v -e 'true'
 
