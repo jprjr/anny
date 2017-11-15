@@ -10,7 +10,9 @@ before_install:
   - docker build --no-cache -t s6-latest -f Dockerfile.latest .
 
 script:
+  - docker run --rm -ti s6-120 ps auxf
   - docker run --rm s6-120 ps auxf
+  - docker run --rm -ti s6-latest ps auxf
   - docker run --rm s6-latest ps auxf
   - docker run --rm s6-120 echo test
   - docker run --rm s6-latest echo test
