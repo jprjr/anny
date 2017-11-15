@@ -12,13 +12,15 @@ before_install:
 script:
   - docker run --rm -ti s6-120 ps auxf
   - docker run --rm s6-120 ps auxf
+  - docker run --rm -ti s6-120 echo test
+  - docker run --rm s6-120 echo test
+  - docker run --rm -ti s6-120 exit 1
+  - docker run --rm s6-120 exit 1
+
   - docker run --rm -ti s6-latest ps auxf
   - docker run --rm s6-latest ps auxf
-  - docker run --rm s6-120 echo test
+  - docker run --rm -ti s6-latest echo test
   - docker run --rm s6-latest echo test
-#  - docker run --rm -ti test-ps /bin/sh -c 'echo $TERM'
-# - docker run --rm -ti izonder/anny-procps ps xafo pid,ppid,pgid,sid,tty,comm,args
-#  - docker run --rm -ti izonder/anny echo 'test'
-#  - docker run --rm -ti izonder/anny ps xafo pid,ppid,pgid,sid,tty,comm,args
-#  - docker run --rm -ti izonder/anny node -v -e 'true'
+  - docker run --rm -ti s6-latest exit 1
+  - docker run --rm s6-latest exit 1
 
